@@ -49,7 +49,7 @@ function displayDriveQuestion() {
     questionImage.src = question.image;
     questionImage.alt = "Image for: " + question.question;
     document.getElementById("feedback").textContent = "";
-    document.getElementById("distance").textContent = `: ${distance}`;
+    document.getElementById("distance").textContent = `Points: ${score}`;
     const answerButtons = document.getElementById("answer-buttons");
     answerButtons.replaceChildren();
     let shuffledAnswers = question.answers.map((text, originalIndex) => ({ text, originalIndex })).sort(() => Math.random() - 0.5);
@@ -101,7 +101,7 @@ function checkAnswer(selectedAnswer) {
     document.getElementById("answer-buttons").querySelectorAll("button").forEach(button => {
             button.disabled = true;
     });
-    document.getElementById("distance").textContent = `Distance: ${distance}`;
+    document.getElementById("distance").textContent = `Points: ${score}`;
     setTimeout(function() {
         nextQuestion();
     }, 3000);
