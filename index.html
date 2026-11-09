@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Driving</h1>
+        <p>Answer questions to drive. Good luck!</p>
+    </header>
+    <main>
+        <section id="home-screen" class="screen active">
+            <h2>Welcome to Driving!</h2>
+            <p>Test your knowledge and reach the destination.</p>
+            <div class="player-name-container">
+                <label for="player-name">Enter Your Name:</label>
+                <input
+                    type="text"
+                    id="player-name"
+                    placeholder="Your name"
+                    maxlength="20"
+                >
+            </div>
+            <button id="start-button">Start Driving</button>
+            <button id="personal_record-button">Personal Records</button>
+        </section>
+        <section id="drive-screen" class="screen">
+            <h2>Drive!</h2>
+            <div class="drive-info">
+                <p>Question: <span id="question-number">1</span></p>
+                <p>Time: <span id="timer">30</span></p>
+                <p>Distance: <span id="distance">0</span>/100</p>
+                <div class="progress-container">
+                    <div id="drive-progress"></div>
+                </div>
+                <p id="progress-text">Race Progress: 0%</p>
+            </div>
+            <div class="drive-track">
+                <div id="player-car">🚗</div>
+                <div class="finish-line"></div>
+            </div>
+            <h3 id="question-text">Your question will appear here.</h3>
+            <div id="question-image-container">
+            <img id="question-image" src="" alt="Question image">
+            </div>
+            <div id="answer-buttons"></div>
+            <p id="feedback"></p>
+        </section>
+        <section id="results-screen" class="screen">
+        <h2>Race Complete!</h2>
+        <h3 id="results-player-name"></h3>
+        <p id="final-score"></p>
+        <p id="final-time"></p>
+        <p id="final-distance"></p>
+        <button id="play-again-button">Play Again</button>
+        <button id="results-personal_records-button">View Personal Records</button>
+    </section>
+        <section id="personal_record-screen" class="screen">
+            <h2>Personal Records</h2>
+            <ol id="personal_record-list">
+            </ol>
+            <button class="back-button">Back to Home</button>
+        </section>
+    </main>
+    <script src="js/questions.js"></script>
+    <script src="js/driving.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/personal_record.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
