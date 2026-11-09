@@ -5,7 +5,11 @@ let currentPlayerName = "";
 
 function startDrive() {
     drivingQuestions = [...questions];
-    drivingQuestions.sort(() => Math.random() - 0.5);
+    for (let i = drivingQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [drivingQuestions[i], drivingQuestions[j]] = [drivingQuestions[j], drivingQuestions[i]];
+    }
+    drivingQuestions = drivingQuestions.slice(0, 10);
     currentQuestionIndex = 0;
     distance = 0;
     score = 0;
