@@ -94,7 +94,9 @@ function checkAnswer(selectedAnswer) {
         updateCarPosition();
         feedback.textContent = `Correct!+${pointsEarned} points! Car moved ${movement}%!`;
     } else {
-        feedback.textContent = selectedAnswer === -1 ? "Time's up!" : "Incorrect! +0 points.";
+        score = Math.max(0, score - 10);
+        const correctAnswerText = question.answers[question.correctAnswer];
+        feedback.textContent = selectedAnswer === -1 ? `Time's up! The correct answer is: ${correctAnswerText}. -10 points`: `Incorrect! The correct answer is: ${correctAnswerText}. -10 points.`;
     }
     document.getElementById("answer-buttons").querySelectorAll("button").forEach(button => {
             button.disabled = true;
@@ -102,7 +104,7 @@ function checkAnswer(selectedAnswer) {
     document.getElementById("distance").textContent = `Distance: ${distance}`;
     setTimeout(function() {
         nextQuestion();
-    }, 1000);
+    }, 3000);
 }
 
 function nextQuestion() {
