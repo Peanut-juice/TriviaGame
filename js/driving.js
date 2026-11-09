@@ -121,7 +121,6 @@ function endDrive() {
     document.getElementById("results-player-name").textContent = `Player: ${currentPlayerName}`;
     document.getElementById("final-score").textContent = `Final Score: ${score}`;
     document.getElementById("final-time").textContent = `Total Time: ${totalTime} seconds`;
-    document.getElementById("final-distance").textContent = `Race Progress: ${carPosition}%`;
     saveScore(currentPlayerName, score, totalTime);
     showScreen("results-screen");
     displayPersonalRecord();
