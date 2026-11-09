@@ -1,15 +1,12 @@
+const targetCorrectAnswers = 10;
 let drivingQuestions = [];
-let currentQuestionIndex = 0, distance = 0, score = 0, totalTime = 0, carPosition = 0;
+let currentQuestionIndex = 0, distance = 0, score = 0, totalTime = 0, carPosition = 0, correctAnswers = 0;
 let answered = false;
 let currentPlayerName = "";
 
 function startDrive() {
     drivingQuestions = [...questions];
-    for (let i = drivingQuestions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [drivingQuestions[i], drivingQuestions[j]] = [drivingQuestions[j], drivingQuestions[i]];
-    }
-    drivingQuestions = drivingQuestions.slice(0, 10);
+    drivingQuestions.sort(() => Math.random() - 0.5);
     currentQuestionIndex = 0;
     distance = 0;
     score = 0;
@@ -46,7 +43,7 @@ function updateCarPosition() {
 function displayDriveQuestion() {
     const question = drivingQuestions[currentQuestionIndex];
     answered = false;
-    document.getElementById("question-number").textContent = `${currentQuestionIndex + 1} of ${drivingQuestions.length}`;
+    document.getElementById("question-number").textContent = `Correct Answers: ${correctAnswers}/${targetCorrectAnswers}`;
     document.getElementById("question-text").textContent = question.question;
     const questionImage = document.getElementById("question-image");
     questionImage.src = question.image;
@@ -79,6 +76,7 @@ function checkAnswer(selectedAnswer) {
     const secondsRemaining = getTimeLeft();
     totalTime += 20 - secondsRemaining;
     if (selectedAnswer === question.correctAnswer) {
+        correctAnswers++;
         const pointsEarned = 100 + (secondsRemaining * 10);
         let movement = 0;
         if (secondsRemaining >= 16) {
@@ -108,10 +106,14 @@ function checkAnswer(selectedAnswer) {
 }
 
 function nextQuestion() {
+    if (correctAnswers >= targetCorrectAnswers) {
+        endDrive();
+        return;
+    }
     currentQuestionIndex++;
     if (currentQuestionIndex >= drivingQuestions.length) {
         endDrive();
-        return;
+        drivingQuestions.sort(() => Math.random() - 0.5);
     }
     displayDriveQuestion();
 }
