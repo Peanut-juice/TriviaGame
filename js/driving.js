@@ -74,7 +74,7 @@ function checkAnswer(selectedAnswer) {
     const question = drivingQuestions[currentQuestionIndex];
     const feedback = document.getElementById("feedback");
     const secondsRemaining = getTimeLeft();
-    totalTime += 20 - secondsRemaining;
+    totalTime += 30 - secondsRemaining;
     if (selectedAnswer === question.correctAnswer) {
         correctAnswers++;
         const pointsEarned = 100 + (secondsRemaining * 10);
